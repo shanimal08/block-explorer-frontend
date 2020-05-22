@@ -11,14 +11,26 @@ interface Props {
 }
 
 export default function PolygonGraph({ width, height, data, yAxisTicks }: Props) {
+    const xAxisTicks: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June'];
+
     return (
         <div className="graphWrapper">
             <PlainGraphTitle
                 title="Network Difficulty"
                 subTitle="How difficult it is to mine a new block for the Tari blockchain."
             />
-            <BackgroundLinesWithAxes height={height} width={width} yAxisTicks={yAxisTicks} data={data}>
-                <polyline rx="3" points={data.join(' ')} style={{ fill: '#F0EFF6', stroke: '#352583', strokeWidth: 2 }} />
+            <BackgroundLinesWithAxes
+                height={height}
+                width={width}
+                yAxisTicks={yAxisTicks}
+                data={data}
+                xAxisTicks={xAxisTicks}
+            >
+                <polyline
+                    rx="3"
+                    points={data.join(' ')}
+                    style={{ fill: '#F0EFF6', stroke: '#352583', strokeWidth: 2 }}
+                />
             </BackgroundLinesWithAxes>
         </div>
     );
